@@ -2,30 +2,154 @@
 *,
 *:before,
 *:after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Red Hat Text", sans-serif;
 }
 
 :root{
-    
+  --main: #A0B5DD;
+  --dark: #050B1C;
+  --light: white;
 }
 
-body{
-    
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+#wrapper{
+  width: 100%;
 }
 
 /* header */
 header{
-    
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+}
+
+.siteName a{
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Electrolize", sans-serif;
+}
+
+#tools a{
+  padding: 0.5rem 1rem;
+}
+
+#tools a:hover{
+  background-color: #A0B5DD;
+}
+
+/* navigation */
+nav{
+  padding: 1rem;
+  background-color: var(--main);
+  width: 100%;
+}
+
+nav ul{
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+
+nav a{
+  padding: 0.5rem;
+}
+
+nav a:hover{
+  background-color: var(--light);
 }
 
 /* main */
-main{
-    
+h1,
+h2{
+  font-family: "Electrolize", sans-serif;
+}
+
+h1{
+  font-size: 2.3rem;
+  padding: 1rem;
+}
+
+a{
+  text-decoration: none;
+  color: var(--dark);
+}
+
+.hero{
+  display: block;
+  margin: 0 auto 1rem auto;
+  padding: 2rem 0 3rem 6rem;
+  border-bottom: 2px solid var(--main);
+}
+
+/* floating section */
+.floating{
+  position: absolute;
+  background-color: #A0B5DD80;
+  padding: 0.5rem;
+  top: 30%;
+  left: 10%;
+}
+
+.floating h2{
+  font-size: 1rem;
+}
+
+.floating ul{
+  padding-left: 1rem;
+  list-style: none;
+}
+
+.floating button{
+  margin: 0.5rem;
+}
+
+.floating button img{
+  width: 100px;
+  height: auto;
+}
+
+/* content layout */
+.home-layout h2{
+  padding: 1rem;
+}
+
+/* upgrades */
+.upgrades{
+  padding: 0.25rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.upgrades figure{
+  background-color: var(--main);
+  padding: 1rem;
+  border: 1px solid var(--dark);
+}
+
+.upgrades img{
+  display: block;
+  margin: 0 auto;
+}
+
+.upgrades figcaption{
+  text-align: center;
+}
+
+/* reviews */
+.reviews li{
+  padding: 0.5rem 0 1.2rem 1rem;
 }
 
 /* footer */
 footer{
-    
+  padding: 1rem;
+  text-align: center;
 }
