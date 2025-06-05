@@ -10,6 +10,7 @@
 
 :root{
   --main: #A0B5DD;
+  --transparent-main: #A0B5DD80;
   --dark: #050B1C;
   --light: white;
 }
@@ -41,7 +42,7 @@ header{
 }
 
 #tools a:hover{
-  background-color: #A0B5DD;
+  background-color: var(--main)
 }
 
 /* navigation */
@@ -91,7 +92,7 @@ a{
 /* floating section */
 .floating{
   position: absolute;
-  background-color: #A0B5DD80;
+  background-color: var(--transparent-main);
   padding: 0.5rem;
   top: 30%;
   left: 10%;
@@ -146,6 +147,35 @@ a{
 /* reviews */
 .reviews li{
   padding: 0.5rem 0 1.2rem 1rem;
+}
+
+/* category heading */
+.category{
+  text-align: center;
+}
+
+/* inventory display */
+#inv-display{
+  display: block;
+  margin: 0 auto;
+}
+
+#inv-display li{
+  background-color: var(--transparent-main);
+  border: 2px solid var(--main);
+  border-radius: 8px;
+  width: 275px;
+  margin: 0 auto;
+  list-style: none;
+}
+
+#inv-display img{
+  display: block;
+  margin: 1rem auto;
+}
+
+.namePrice{
+  text-align: center;
 }
 
 /* footer */
