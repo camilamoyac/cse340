@@ -1,0 +1,12 @@
+<!-- content heading -->
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<div class="error-display">
+    <%- message %>
+    <p>And the car!</p>
+    <img src="/images/vehicles/delorean.jpg" alt="Drawing of delorean car.">
+</div>

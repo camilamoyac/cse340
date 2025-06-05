@@ -44,7 +44,10 @@
     gap: 1rem;
   }
 
-
+  /* error display */
+  .error-display img{
+    left: -27%;
+  }
 
   /* content layout */
   .home-layout{
