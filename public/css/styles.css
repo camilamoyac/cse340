@@ -89,6 +89,55 @@ a{
   border-bottom: 2px solid var(--main);
 }
 
+/* flash message */
+.notice{
+  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  list-style: none;
+  background-color: rgba(255, 0, 0, 0.164);
+  border-left: 10px solid darkred;
+  width: 60%;
+}
+
+/* login */
+.login{
+  background-color: rgb(67, 77, 109);
+  border-radius: 10px;
+  margin: 1rem auto;
+  padding: 1rem;
+  width: 40%;
+  border: 2px solid var(--dark);
+}
+
+.login input{
+  display: block;
+  width: 95%;
+  height: 2rem;
+}
+
+.login label{
+  color: var(--light);
+  font-size: 1.25rem;
+}
+
+.login button{
+  display: block;
+  margin: 0 auto 1rem auto;
+  font-size: large;
+  padding: 0.25rem 2rem;
+  
+}
+
+.login p{
+  text-align: center;
+  color: var(--light);
+}
+
+.login a{
+  text-decoration: underline;
+  color: var(--light);
+}
+
 /* floating section */
 .floating{
   position: absolute;

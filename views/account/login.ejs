@@ -1,0 +1,21 @@
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %></title>
+</head>
+<body>
+  <h1><%= title %></h1>
+  <%- messages() %>
+  <div class="login">
+    <form action="/account/login" method="post">
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p>No account? <a href="/account/register">Sign-up here</a></p>
+  </div>
+</body>
