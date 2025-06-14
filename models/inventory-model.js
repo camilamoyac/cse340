@@ -25,5 +25,19 @@ async function getInventoryByClassificationId(classification_id) {
   }
 }
 
+// add classification column
+async function addClassification(classification_name) {
+  try {
+    const sql = `
+      INSERT INTO classification (classification_name)
+      VALUES ($1)
+      RETURNING *;
+    `
+    const data = await pool.query(sql, [classification_name])
+    return data.rowCount
+  } catch (error) {
+    throw error
+  }
+}
 
-module.exports = {getClassifications, getInventoryByClassificationId}
+module.exports = {getClassifications, getInventoryByClassificationId, addClassification}

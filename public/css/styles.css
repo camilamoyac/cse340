@@ -90,7 +90,7 @@ a{
 }
 
 /* flash message */
-.notice{
+.notice, .errors{
   margin: 0 1rem;
   padding: 0.5rem 1rem;
   list-style: none;
@@ -134,7 +134,7 @@ a{
   padding: 1rem;
 }
 
-.password-hint{
+.input-hint{
   text-align: left;
   background-color: var(--main);
   padding: 1rem;
@@ -255,6 +255,11 @@ a{
   position: absolute;
   left: -80%;
   top: 30%;
+}
+
+/* inventory management */
+.management-links{
+  padding-left: 2rem;
 }
 
 /* footer */

@@ -19,5 +19,59 @@ invCont.buildByClassificationId = async function (req, res, next) {
   })
 }
 
+/* ***************************
+ *  Build inventory management view
+ * ************************** */
+invCont.buildManagement = async function (req, res, next) {
+  try {
+    let nav = await utilities.getNav()
+    res.render("inventory/management", {
+      title: "Inventory Management",
+      nav
+    })
+  } catch (error) {
+    next(error)
+  }
+}
+
+/* Show add-classification form */
+invCont.buildAddClassification = async function (req, res) {
+  const nav = await utilities.getNav()
+  res.render("inventory/add-classification", {
+    title: "Add New Classification",
+    nav,
+    errors: null
+  })
+}
+
+/* Handle classification form submission */
+invCont.addClassification = async function (req, res) {
+  const { classification_name } = req.body
+
+  try {
+    const addResult = await invModel.addClassification(classification_name)
+    if (addResult) {
+      const nav = await utilities.getNav()
+      res.locals.nav = nav
+      req.flash("message", "New classification added successfully.")
+      res.render("inventory/management", {
+        title: "Inventory Management",
+        nav,
+        message: req.flash("message")
+      })
+    } else {
+      req.flash("message", "Failed to add classification.")
+      const nav = await utilities.getNav()
+      res.render("inventory/add-classification", {
+        title: "Add New Classification",
+        nav,
+        message: req.flash("message"),
+        errors: null
+      })
+    }
+  } catch (error) {
+    throw new Error("Database error: " + error.message)
+  }
+}
 
 module.exports = invCont
