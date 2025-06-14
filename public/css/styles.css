@@ -99,8 +99,8 @@ a{
   width: 60%;
 }
 
-/* login */
-.login{
+/* login & registration */
+.form{
   background-color: rgb(67, 77, 109);
   border-radius: 10px;
   margin: 1rem auto;
@@ -109,18 +109,18 @@ a{
   border: 2px solid var(--dark);
 }
 
-.login input{
+.form input{
   display: block;
   width: 95%;
   height: 2rem;
 }
 
-.login label{
+.form label{
   color: var(--light);
   font-size: 1.25rem;
 }
 
-.login button{
+.form button{
   display: block;
   margin: 0 auto;
   font-size: large;
@@ -128,13 +128,13 @@ a{
   
 }
 
-.login p{
+.form p{
   text-align: center;
   color: var(--light);
   padding: 1rem;
 }
 
-.login a{
+.form a{
   text-decoration: underline;
   color: var(--light);
 }
