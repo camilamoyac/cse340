@@ -134,10 +134,21 @@ a{
   padding: 1rem;
 }
 
+.password-hint{
+  text-align: left;
+  background-color: var(--main);
+  padding: 1rem;
+  margin: 1rem;
+}
+
 .form a{
   text-decoration: underline;
   color: var(--light);
 }
+
+ input:required:valid {
+ background-color: rgb(120, 187, 120);
+ }
 
 /* floating section */
 .floating{
