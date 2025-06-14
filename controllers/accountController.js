@@ -13,6 +13,9 @@ async function buildLogin(req, res, next) {
   })
 }
 
+/* ****************************************
+*  Deliver Registration view
+* *************************************** */
 async function buildRegister(req, res, next) {
   let nav = await utilities.getNav()
   res.render("account/register", {
