@@ -74,4 +74,58 @@ invCont.addClassification = async function (req, res) {
   }
 }
 
+// Build Add inventory form
+invCont.buildAddInventory = async function (req, res) {
+  const nav = await utilities.getNav()
+  const classificationList = await utilities.buildClassificationList()
+  res.render("inventory/add-inventory", {
+    title: "Add New Inventory",
+    nav,
+    classificationList,
+    errors: null
+  })
+}
+
+// Handle inventory form submission
+invCont.addInventory = async function (req, res) {
+  const {
+    classification_id, inv_make, inv_model, inv_description,
+    inv_image, inv_thumbnail, inv_price, inv_year,
+    inv_miles, inv_color
+  } = req.body
+
+  try {
+    const result = await invModel.addInventoryItem(
+      classification_id, inv_make, inv_model, inv_description,
+      inv_image, inv_thumbnail, inv_price, inv_year,
+      inv_miles, inv_color
+    )
+    console.log("Inventory insert result:", result)
+    if (result) {
+      const nav = await utilities.getNav()
+      res.locals.nav = nav
+      req.flash("success", "New inventory item added successfully.")
+      res.render("inventory/management", {
+        title: "Inventory Management",
+        message: req.flash("message")
+      })
+    } else {
+      throw new Error("Insert failed")
+    }
+  } catch (error) {
+    console.error("Add Inventory Error:", error) 
+    const nav = await utilities.getNav()
+    const classificationList = await utilities.buildClassificationList(classification_id)
+    req.flash("error", "Error: Unable to add inventory.")
+    res.render("inventory/add-inventory", {
+      title: "Add New Inventory",
+      nav,
+      classificationList,
+      message: req.flash("message"),
+      errors: null,
+      ...req.body
+    })
+  }
+}
+
 module.exports = invCont

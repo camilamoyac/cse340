@@ -90,12 +90,30 @@ a{
 }
 
 /* flash message */
-.notice, .errors{
+.notice{
+  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  list-style: none;
+  background-color: rgba(0, 81, 255, 0.164);
+  border-left: 10px solid darkblue;
+  width: 60%;
+}
+
+.errors, .error{
   margin: 0 1rem;
   padding: 0.5rem 1rem;
   list-style: none;
   background-color: rgba(255, 0, 0, 0.164);
   border-left: 10px solid darkred;
+  width: 60%;
+}
+
+.success{
+  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  list-style: none;
+  background-color: rgba(0, 255, 64, 0.164);
+  border-left: 10px solid darkgreen;
   width: 60%;
 }
 
@@ -122,10 +140,9 @@ a{
 
 .form button{
   display: block;
-  margin: 0 auto;
+  margin: 1rem auto;
   font-size: large;
   padding: 0.25rem 2rem;
-  
 }
 
 .form p{
@@ -260,6 +277,19 @@ a{
 /* inventory management */
 .management-links{
   padding-left: 2rem;
+}
+
+/* add inventory form */
+#classificationList{
+  padding: 0.25rem;
+  margin: 0.5rem 0;
+  display: block;
+}
+
+.form textarea{
+  display: block;
+  width: 95%;
+  height: 100px;
 }
 
 /* footer */
