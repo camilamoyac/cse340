@@ -122,7 +122,7 @@ a{
 
 .login button{
   display: block;
-  margin: 0 auto 1rem auto;
+  margin: 0 auto;
   font-size: large;
   padding: 0.25rem 2rem;
   
@@ -131,6 +131,7 @@ a{
 .login p{
   text-align: center;
   color: var(--light);
+  padding: 1rem;
 }
 
 .login a{
