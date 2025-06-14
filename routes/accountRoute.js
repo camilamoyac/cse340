@@ -8,5 +8,7 @@ const accController = require("../controllers/accountController")
 router.get("/login", utilities.handleErrors(accController.buildLogin));
 // Route to build the registration view
 router.get("/register", utilities.handleErrors(accController.buildRegister));
+// post
+router.post('/register', utilities.handleErrors(accController.registerAccount));
 
 module.exports = router;
