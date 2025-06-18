@@ -6,7 +6,10 @@ const accController = require("../controllers/accountController")
 const regValidate = require('../utilities/account-validation')
 
 // Route to build inventory by classification view
-router.get("/login", utilities.handleErrors(accController.buildLogin));
+router.get(
+  "/login",
+  utilities.handleErrors(accController.buildLogin)
+);
 // Process the login request
 router.post(
   "/login",
@@ -15,7 +18,10 @@ router.post(
   utilities.handleErrors(accController.accountLogin)
 );
 // Route to build the registration view
-router.get("/register", utilities.handleErrors(accController.buildRegister));
+router.get(
+  "/register",
+  utilities.handleErrors(accController.buildRegister)
+);
 // post
 router.post("/register",
   regValidate.registrationRules(),
@@ -23,6 +29,15 @@ router.post("/register",
   utilities.handleErrors(accController.registerAccount)
 );
 // Default account route (account management)
-router.get("/", utilities.checkLogin, utilities.handleErrors(accController.buildAccountManagement));
+router.get(
+  "/",
+  utilities.checkLogin,
+  utilities.handleErrors(accController.buildAccountManagement)
+);
+// access to the update view
+router.get(
+  "/update/:account_id",
+  utilities.handleErrors(accController.buildUpdateAccount)
+);
 
 module.exports = router;

@@ -68,7 +68,8 @@ nav a:hover{
 
 /* main */
 h1,
-h2{
+h2, 
+h3{
   font-family: "Electrolize", sans-serif;
   padding: 1rem;
 }
@@ -307,6 +308,10 @@ tr:nth-child(even) {
   display: block;
   width: 95%;
   height: 100px;
+}
+
+.manage p{
+  padding-left: 1rem;
 }
 
 /* footer */

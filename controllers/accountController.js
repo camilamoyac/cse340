@@ -116,4 +116,27 @@ async function buildAccountManagement(req, res) {
   })
 }
 
-module.exports = { buildLogin, buildRegister, registerAccount, buildAccountManagement, accountLogin }
+// deliver the update form view
+async function buildUpdateAccount(req, res) {
+  const nav = await utilities.getNav()
+  const accountId = req.params.account_id
+
+  // Optional: Fetch current user data if needed
+  // const accountData = await accountModel.getAccountById(accountId)
+
+  res.render("account/update-account", {
+    title: "Update Account Information",
+    nav,
+    accountId,
+    // accountData
+  })
+}
+
+module.exports = {
+  buildLogin,
+  buildRegister,
+  registerAccount,
+  buildAccountManagement,
+  accountLogin,
+  buildUpdateAccount
+}
