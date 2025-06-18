@@ -18,6 +18,7 @@ const pool = require('./database/')
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+const jwt = require("jsonwebtoken");
 
 /* ***********************
  * Middleware
@@ -53,6 +54,25 @@ app.use(utilities.checkJWTToken)
 app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout") // not at views root
+
+// check if a user is logged in (JWT cookie) and expose user info
+app.use((req, res, next) => {
+  const token = req.cookies.jwt;
+  if (token) {
+    try {
+      const payload = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+      res.locals.loggedIn = true;
+      res.locals.user = payload;
+    } catch (err) {
+      res.locals.loggedIn = false;
+      res.locals.user = null;
+    }
+  } else {
+    res.locals.loggedIn = false;
+    res.locals.user = null;
+  }
+  next();
+});
 
 /* ***********************
  * Routes
