@@ -30,5 +30,7 @@ router.post(
 )
 // GET Fetching Inventory
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+// GET Route to deliver the "Edit Inventory Item" view
+router.get("/edit/:inv_id", utilities.handleErrors(invController.buildEditInventoryView))
 
 module.exports = router;
