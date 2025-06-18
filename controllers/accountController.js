@@ -8,7 +8,6 @@ const bcrypt = require("bcrypt")
 *  Deliver login view
 * *************************************** */
 async function buildLogin(req, res, next) {
-  console.log("🔑 buildLogin controller hit")
   let nav = await utilities.getNav()
   res.render("account/login", {
     title: "Login",
@@ -68,7 +67,6 @@ async function registerAccount(req, res) {
 async function accountLogin(req, res) {
   let nav = await utilities.getNav()
   const { account_email, account_password } = req.body
-  console.log("🔐 Login Attempt:", account_email, account_password)
   const accountData = await accountModel.getAccountByEmail(account_email)
   if (!accountData) {
     req.flash("notice", "Please check your credentials and try again.")
