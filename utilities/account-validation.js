@@ -108,4 +108,85 @@ validate.checkLoginData = async (req, res, next) => {
   next()
 }
 
+// edit account data rules
+validate.accountUpdateRules = () => {
+  return [
+    body("account_firstname")
+      .trim()
+      .escape()
+      .notEmpty()
+      .withMessage("Please provide a first name."),
+    body("account_lastname")
+      .trim()
+      .escape()
+      .notEmpty()
+      .withMessage("Please provide a last name."),
+    body("account_email")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isEmail()
+      .normalizeEmail()
+      .withMessage("A valid email is required."),
+  ]
+}
+
+// edit password rules
+validate.passwordChangeRules = () => {
+  return [
+    body("account_password")
+      .trim()
+      .notEmpty()
+      .isStrongPassword({
+        minLength: 12,
+        minLowercase: 1,
+        minUppercase: 1,
+        minNumbers: 1,
+        minSymbols: 1,
+      })
+      .withMessage("Password does not meet the requirements."),
+  ]
+}
+
+// validate account data update
+validate.checkAccountUpdate = async (req, res, next) => {
+  let errors = validationResult(req)
+  const { account_firstname, account_lastname, account_email, account_id } = req.body
+
+  if (!errors.isEmpty()) {
+    const nav = await utilities.getNav()
+    res.render("account/update", {
+      title: "Update Account Information",
+      nav,
+      errors,
+      accountData: {
+        account_firstname,
+        account_lastname,
+        account_email,
+        account_id
+      }
+    })
+    return
+  }
+  next()
+}
+
+// validate password update
+validate.checkPasswordChange = async (req, res, next) => {
+  let errors = validationResult(req)
+  const { account_id } = req.body
+
+  if (!errors.isEmpty()) {
+    const nav = await utilities.getNav()
+    res.render("account/update-password", {
+      title: "Update Account Information",
+      nav,
+      errors,
+      accountData: { account_id }
+    })
+    return
+  }
+  next()
+}
+
 module.exports = validate

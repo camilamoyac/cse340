@@ -14,11 +14,14 @@ const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require('./utilities/');
 const session = require("express-session")
+const flash = require("connect-flash");
+const messages = require("express-messages");
 const pool = require('./database/')
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 const jwt = require("jsonwebtoken");
+
 
 /* ***********************
  * Middleware

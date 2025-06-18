@@ -17,6 +17,7 @@ router.post(
   regValidate.checkLoginData,
   utilities.handleErrors(accController.accountLogin)
 );
+
 // Route to build the registration view
 router.get(
   "/register",
@@ -28,16 +29,37 @@ router.post("/register",
   regValidate.checkRegData,
   utilities.handleErrors(accController.registerAccount)
 );
+
 // Default account route (account management)
 router.get(
   "/",
   utilities.checkLogin,
   utilities.handleErrors(accController.buildAccountManagement)
 );
+
 // access to the update view
 router.get(
   "/update/:account_id",
   utilities.handleErrors(accController.buildUpdateAccount)
 );
+// POST route to process account info update
+router.post(
+  "/update",
+  regValidate.accountUpdateRules(),
+  regValidate.checkAccountUpdate,
+  utilities.handleErrors(accController.updateAccountInfo)
+);
+// POST route to process password update
+router.post(
+  "/update-password",
+  regValidate.passwordChangeRules(),
+  regValidate.checkPasswordChange,
+  utilities.handleErrors(accController.updatePassword)
+);
+
+router.get(
+  "/logout",
+  utilities.handleErrors(accController.logout)
+)
 
 module.exports = router;

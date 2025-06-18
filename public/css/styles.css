@@ -132,6 +132,7 @@ a{
   display: block;
   width: 95%;
   height: 2rem;
+  margin-bottom: 1rem;
 }
 
 .form label{
@@ -312,6 +313,26 @@ tr:nth-child(even) {
 
 .manage p{
   padding-left: 1rem;
+}
+
+.form fieldset{
+  border: none;
+  font-size: larger;
+}
+
+.light label,
+.light p{
+  color: var(--dark);
+}
+
+.light p{
+  font-size: large;
+  text-align: left;
+  padding: 0.5rem 0.25rem;
+}
+
+.light{
+  background-color: #A0B5DD80;
 }
 
 /* footer */

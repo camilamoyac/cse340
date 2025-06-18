@@ -26,4 +26,53 @@ async function getAccountByEmail (account_email) {
   }
 }
 
-module.exports = { registerAccount, getAccountByEmail };
+// get account by ID
+async function getAccountById(account_id) {
+  try {
+    const data = await pool.query(
+      "SELECT account_id, account_firstname, account_lastname, account_email, account_type FROM account WHERE account_id = $1",
+      [account_id]
+    )
+    return data.rows[0]
+  } catch (error) {
+    console.error("getAccountById error", error)
+  }
+}
+
+// update account
+async function updateAccount(account_id, firstname, lastname, email) {
+  try {
+    const sql = `
+      UPDATE account
+      SET account_firstname = $1, account_lastname = $2, account_email = $3
+      WHERE account_id = $4
+    `
+    const data = await pool.query(sql, [firstname, lastname, email, account_id])
+    return data.rowCount
+  } catch (error) {
+    console.error("updateAccount error", error)
+  }
+}
+
+// update password
+async function updatePassword(account_id, hashedPassword) {
+  try {
+    const sql = `
+      UPDATE account
+      SET account_password = $1
+      WHERE account_id = $2
+    `
+    const data = await pool.query(sql, [hashedPassword, account_id])
+    return data.rowCount
+  } catch (error) {
+    console.error("updatePassword error", error)
+  }
+}
+
+module.exports = { 
+  registerAccount,
+  getAccountByEmail,
+  getAccountById,
+  updateAccount,
+  updatePassword
+};
