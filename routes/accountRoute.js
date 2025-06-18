@@ -23,6 +23,6 @@ router.post("/register",
   utilities.handleErrors(accController.registerAccount)
 );
 // Default account route (account management)
-router.get("/", utilities.handleErrors(accController.buildAccountManagement));
+router.get("/", utilities.checkLogin, utilities.handleErrors(accController.buildAccountManagement));
 
 module.exports = router;
