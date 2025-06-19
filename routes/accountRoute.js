@@ -1,9 +1,11 @@
 // Needed Resources 
-const express = require("express")
-const router = new express.Router()
-const utilities = require("../utilities")
-const accController = require("../controllers/accountController")
-const regValidate = require('../utilities/account-validation')
+const express = require("express");
+const router = new express.Router();
+const utilities = require("../utilities");
+const accController = require("../controllers/accountController");
+const regValidate = require('../utilities/account-validation');
+const favController = require("../controllers/favoritesController");
+const { validateFavorite } = require("../utilities/favorite-validation");
 
 // Route to build inventory by classification view
 router.get(
@@ -56,10 +58,28 @@ router.post(
   regValidate.checkPasswordChange,
   utilities.handleErrors(accController.updatePassword)
 );
-
+// GET logout
 router.get(
   "/logout",
   utilities.handleErrors(accController.logout)
-)
+);
 
+// POST Add to favorites 
+router.post(
+  "/favorites/add",
+  utilities.checkLogin,
+  validateFavorite,
+  utilities.handleErrors(favController.addFavorite)
+)
+// GET View favorites
+router.get(
+  "/favorites",
+  utilities.checkLogin,
+  utilities.handleErrors(favController.viewFavorites)
+)
+// 
+router.get(
+  "/favorites/add/:inv_id",
+  utilities.handleErrors(accController.addFavorite)
+)
 module.exports = router;

@@ -30,10 +30,10 @@ Util.getNav = async function (req, res, next) {
 /* **************************************
 * Build the classification view HTML
 * ************************************ */
-Util.buildClassificationGrid = async function(data){
+Util.buildClassificationGrid = async function(data, loggedIn = false){
   let grid
   if(data.length > 0){
-    grid = '<ul id="inv-display">'
+    grid = '<ul class="inv-display">'
     data.forEach(vehicle => { 
       grid += '<li>'
       grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
@@ -51,6 +51,16 @@ Util.buildClassificationGrid = async function(data){
       grid += '<span>$' 
       + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
       grid += '</div>'
+      // Conditionally render favorite button or login prompt
+      if (loggedIn) {
+        grid += `
+          <form action="/account/favorites/add" method="post">
+            <input type="hidden" name="inv_id" value="${vehicle.inv_id}">
+            <button class="fav" type="submit">⭐Add to Favorites</button>
+          </form>`
+      } else {
+        grid += `<p class="imitateButton"><a href="/account/login">⭐Log in to add to favorites</a></p>`
+      }
       grid += '</li>'
     })
     grid += '</ul>'

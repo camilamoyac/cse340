@@ -258,12 +258,12 @@ a{
 }
 
 /* inventory display */
-#inv-display{
+.inv-display{
   display: block;
   margin: 0 auto;
 }
 
-#inv-display li{
+.inv-display li{
   background-color: var(--transparent-main);
   border: 2px solid var(--main);
   border-radius: 8px;
@@ -272,9 +272,13 @@ a{
   list-style: none;
 }
 
-#inv-display img{
+.inv-display img{
   display: block;
   margin: 1rem auto;
+}
+
+.inv-display p, .inv-display h2{
+  text-align: center;
 }
 
 .namePrice{
@@ -333,6 +337,30 @@ tr:nth-child(even) {
 
 .light{
   background-color: #A0B5DD80;
+}
+
+.fav{
+  display: block;
+  margin: 1rem auto;
+  padding: 0.25rem 0.5rem;
+  font-size: 1.15rem;
+  background-color: rgb(67, 77, 109);
+  color: var(--light);
+}
+
+.imitateButton{
+  display: block;
+  margin: 1rem auto;
+  padding: 0.25rem 0.5rem;
+  font-size: 1.15rem;
+  background-color: rgb(67, 77, 109);
+  border-radius: 7px;
+  border: 1px solid var(--dark);
+  width: 95%;
+}
+
+.imitateButton a{
+  color: var(--light);
 }
 
 /* footer */

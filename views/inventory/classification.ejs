@@ -1,12 +1,10 @@
-<!-- content heading -->
 <% if (title) { %>
 <h1 class="category"><%= title %></h1>
 <% } else {
   res.redirect('/')
 } %>
 
-<!-- message -->
-<%# messages() %>
+<%- messages() %>
 
 <!-- inventory items display -->
 <%- grid %>
